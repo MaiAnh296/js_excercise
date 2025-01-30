@@ -66,7 +66,7 @@ suite("Unit Tests", function () {
 
   // // -----------------------------------------------------------------------------
 
-  // suite("Equality", function () {
+   suite("Equality", function () {
   //   // #5
   //   test("#equal, #notEqual", function () {
   //     assert.fail(12, "12", "Numbers are coerced into strings with ==");
@@ -74,6 +74,14 @@ suite("Unit Tests", function () {
   //     assert.fail(6 * "2", "12");
   //     assert.fail(6 + "2", "12");
   //   });
+
+    /** 5 - Use assert.equal() or assert.notEqual() to make the tests pass. **/
+    test("#equal, #notEqual", function () {
+      assert.equal(12, "12", "Numbers are coerced into strings with ==");
+      assert.notEqual({ value: 1 }, { value: 1 }, "== compares object references");
+      assert.equal(6 * "2", "12");
+      assert.notEqual(6 + "2", "12");
+    });
   //   // #6
   //   test("#strictEqual, #notStrictEqual", function () {
   //     assert.fail(6, "6");
@@ -81,6 +89,14 @@ suite("Unit Tests", function () {
   //     assert.fail(6 * "2", 12);
   //     assert.fail([1, "a", {}], [1, "a", {}]);
   //   });
+
+    /** 6 - Use assert.strictEqual() or assert.notStrictEqual() to make the tests pass. **/
+    test("#strictEqual, #notStrictEqual", function () {
+      assert.notStrictEqual(6, "6");
+      assert.strictEqual(6, 3 * 2);
+      assert.notStrictEqual(6 * "2", 12);
+      assert.notStrictEqual([1, "a", {}], [1, "a", {}]);
+    });
   //   // #7
   //   test("#deepEqual, #notDeepEqual", function () {
   //     assert.fail(
@@ -94,7 +110,21 @@ suite("Unit Tests", function () {
   //       "The order of array elements does matter"
   //     );
   //   });
-  // });
+
+    /** 7 - Use assert.deepEqual() or assert.notDeepEqual() to make the tests pass. **/
+    test("#deepEqual, #notDeepEqual", function () {
+      assert.deepEqual(
+        { a: "1", b: 5 },
+        { b: 5, a: "1" },
+        "The order of keys doesn't matter"
+      );
+      assert.notDeepEqual(
+        { a: [5, 6] },
+        { a: [6, 5] },
+        "The order of array elements does matter"
+      );
+    });
+   });
 
   // // -----------------------------------------------------------------------------
 
