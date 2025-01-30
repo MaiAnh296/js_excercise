@@ -1,9 +1,8 @@
-const chai = require('chai');
+const chai = require("chai");
 const assert = chai.assert;
 
 suite("Unit Tests", function () {
   suite("Basic Assertions", function () {
-    // #1
     // test("#isNull, #isNotNull", function () {
     //   assert.fail(
     //     null,
@@ -12,6 +11,7 @@ suite("Unit Tests", function () {
     //   assert.fail(1, "1 is not null");
     // });
 
+    // #1
     /** 1 - Use assert.isNull() or assert.isNotNull() to make the tests pass. **/
     test("#isNull, #isNotNull", function () {
       assert.isNull(
