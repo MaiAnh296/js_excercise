@@ -27,6 +27,12 @@ suite("Unit Tests", function () {
   //     assert.fail(undefined, "undefined IS undefined");
   //     assert.fail("hello", "A string is not undefined");
   //   });
+   /** 2 - Use assert.isDefined() or assert.isUndefined() to make the tests pass. **/
+    test("#isDefined, #isUndefined", function () {
+      assert.isDefined(null, "null is not undefined");
+      assert.isUndefined(undefined, "undefined IS undefined");
+      assert.isDefined("hello", "A string is not undefined");
+    });
   //   // #3
   //   test("#isOk, #isNotOk", function () {
   //     assert.fail(null, "null is falsey");
