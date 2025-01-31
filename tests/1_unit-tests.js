@@ -208,13 +208,13 @@ suite("Unit Tests", function () {
     });
    });
 
-  // // -----------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------
 
-  // const formatPeople = function (name, age) {
-  //   return "# name: " + name + ", age: " + age + "\n";
-  // };
-  // suite("Strings", function () {
-  //   // #13
+  const formatPeople = function (name, age) {
+    return "# name: " + name + ", age: " + age + "\n";
+  };
+  suite("Strings", function () {
+    // #13
   //   test("#isString, #isNotString", function () {
   //     assert.fail(Math.sin(Math.PI / 4), "A float is not a string");
   //     assert.fail(
@@ -223,18 +223,38 @@ suite("Unit Tests", function () {
   //     );
   //     assert.fail(JSON.stringify({ type: "object" }), "JSON is a string");
   //   });
+
+    /** 13 - Use assert.isString() or assert.isNotString() to make the tests pass. **/
+    test("#isString, #isNotString", function () {
+      assert.isNotString(Math.sin(Math.PI / 4), "A float is not a string");
+      assert.isString(process.env.PATH, "An env variable is a string (or undefined)");
+      assert.isString(JSON.stringify({ type: "object" }), "JSON is a string");
+    });
   //   // #14
   //   test("String #include, #notInclude", function () {
   //     assert.fail("Arrow", "row", "'Arrow' contains 'row'");
   //     assert.fail("dart", "queue", "But 'dart' doesn't contain 'queue'");
   //   });
+
+    /** 14 - Use assert.include() or assert.notInclude() to make the tests pass. **/
+    test("String #include, #notInclude", function () {
+      assert.include("Arrow", "row", "'Arrow' contains 'row'");
+      assert.notInclude("dart", "queue", "But 'dart' doesn't contain 'queue'");
+    });
   //   // #15
   //   test("#match, #notMatch", function () {
   //     const regex = /^#\sname\:\s[\w\s]+,\sage\:\s\d+\s?$/;
   //     assert.fail(formatPeople("John Doe", 35), regex);
   //     assert.fail(formatPeople("Paul Smith III", "twenty-four"), regex);
   //   });
-  // });
+  
+    /** 15 - Use assert.match() or assert.notMatch() to make the tests pass. **/
+    test("#match, #notMatch", function () {
+      const regex = /^#\sname\:\s[\w\s]+,\sage\:\s\d+\s?$/;
+      assert.match(formatPeople("John Doe", 35), regex);
+      assert.notMatch(formatPeople("Paul Smith III", "twenty-four"), regex);
+    });
+  });
 
   // // -----------------------------------------------------------------------------
 
