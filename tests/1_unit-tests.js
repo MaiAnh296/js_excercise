@@ -321,8 +321,8 @@ suite("Unit Tests", function () {
     test("#typeOf, #notTypeOf", function () {
       assert.typeOf(myCar, "object");
       assert.typeOf(myCar.model, "string");
-      assert.typeOf(airlinePlane.wings, "number");
-      assert.notTypeOf(airlinePlane.engines, "object");
+      assert.notTypeOf(airlinePlane.wings, "string");
+      assert.notTypeOf(airlinePlane.engines, "array");
       assert.typeOf(myCar.wheels, "number");
     });
     //   // #18
