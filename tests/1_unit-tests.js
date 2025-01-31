@@ -178,9 +178,9 @@ suite("Unit Tests", function () {
 
   // // -----------------------------------------------------------------------------
 
-  // const winterMonths = ["dec,", "jan", "feb", "mar"];
-  // const backendLanguages = ["php", "python", "javascript", "ruby", "asp"];
-  // suite("Arrays", function () {
+  const winterMonths = ["dec,", "jan", "feb", "mar"];
+  const backendLanguages = ["php", "python", "javascript", "ruby", "asp"];
+   suite("Arrays", function () {
   //   // #11
   //   test("#isArray, #isNotArray", function () {
   //     assert.fail(
@@ -189,12 +189,24 @@ suite("Unit Tests", function () {
   //     );
   //     assert.fail([1, 2, 3].indexOf(2), "indexOf returns a number");
   //   });
+
+    /** 11 - Use assert.isArray() or assert.isNotArray() to make the tests pass. **/
+    test("#isArray, #isNotArray", function () {
+      assert.isArray("isThisAnArray?".split(""), "String.prototype.split() returns an array");
+      assert.isNotArray([1, 2, 3].indexOf(2), "indexOf returns a number");
+    });
   //   // #12
   //   test("Array #include, #notInclude", function () {
   //     assert.fail(winterMonths, "jul", "It's summer in july...");
   //     assert.fail(backendLanguages, "javascript", "JS is a backend language");
   //   });
-  // });
+
+    /** 12 - Test the arrays winterMonths and backendLanguages. **/
+    test("Array #include, #notInclude", function () {
+      assert.notInclude(winterMonths, "jul", "It's summer in july...");
+      assert.include(backendLanguages, "javascript", "JS is a backend language");
+    });
+   });
 
   // // -----------------------------------------------------------------------------
 
