@@ -27,8 +27,7 @@ suite('Functional Tests', function () {
     assert.equal(res.text, 'hello Guest');
   });
   
-
-//     // #2
+    // #2
 //     test('Test GET /hello with your name', function (done) {
 //       chai
 //         .request(server)
@@ -40,7 +39,13 @@ suite('Functional Tests', function () {
 //           done();
 //         });
 //     });
-//     // #3
+    test('Test GET /hello with your name', async function () {
+      const res = await chai.request(server).get('/hello?name=xy_z');
+      assert.equal(res.status, 200);
+      assert.equal(res.text, 'hello xy_z');
+    });
+    
+    // #3
 //     test('Send {surname: "Colombo"}', function (done) {
 //       chai
 //         .request(server)
@@ -53,12 +58,27 @@ suite('Functional Tests', function () {
 //           done();
 //         });
 //     });
+    test('Send {surname: "Colombo"}', async function () {
+      const res = await chai.request(server).put('/travellers').send({surname: 'Colombo'});
+      assert.equal(res.status, 200);
+      assert.equal(res.type, 'application/json');
+      assert.equal(res.body.name, 'Cristoforo');
+      assert.equal(res.body.surname, 'Colombo');
+    });
+
 //     // #4
 //     test('Send {surname: "da Verrazzano"}', function (done) {
 //       assert.fail();
 
 //       done();
 //     });
+    test('Send {surname: "da Verrazzano"}', async function () {
+      const res = await chai.request(server).put('/travellers').send({surname: 'da Verrazzano'});
+      assert.equal(res.status, 200);
+      assert.equal(res.type, 'application/json');
+      assert.equal(res.body.name, 'Giovanni');
+      assert.equal(res.body.surname, 'da Verrazzano');
+    });
   });
 });
 
